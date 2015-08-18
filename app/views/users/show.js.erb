@@ -1,0 +1,12 @@
+<%# require './lib/assets_helper.rb' %>
+<%# part = partial('./views/users/_user_tasks', :var1 => true, :var2 => false) %>
+
+//$(document).ready(function() {
+//    $('#assign').click(function() {
+ //       $('#task_table').append("<%= j render(partial: 'user_tasks', locals: {task: @task}); %>");
+        
+  //  });
+//});
+$('#assign').click(function() {
+	$("<%= j (render @user.tasks) %>").appendTo("#parti");
+});

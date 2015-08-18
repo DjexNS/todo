@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "tasks/index", type: :view do
+describe "tasks/index", type: :view do
   before(:each) do
     assign(:tasks, [
       Task.create!(

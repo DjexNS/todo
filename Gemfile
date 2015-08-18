@@ -13,6 +13,7 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'pundit'
 gem 'rb-readline'
+gem 'populator'
 gem 'ffaker'
 group :development do
   gem 'better_errors'

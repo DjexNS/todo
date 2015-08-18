@@ -1,6 +1,15 @@
 <h3>Home</h3>
-<% if !current_user.nil? and current_user.admin? %>
+<% if !current_user.nil?# and current_user.admin? %>
   <% @users.each do |user| %>
-    <p>User: <%=link_to user.email, user %> Role: <%= user.role unless user.role.nil? %></p>
+  	<% if current_user == user %>
+      <p>User: <%=link_to user.email, user %> Role: <%= user.role unless user.role.nil? %> ID: <%= user.id %></p>
+  		
+  		<%#= link_to 'Assign', :controller => :user, :action => :assign, :id => user.id %>
+
+		
+
+    <% end %>  
   <% end %>
 <% end %>
+
+

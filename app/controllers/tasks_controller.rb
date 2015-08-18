@@ -1,34 +1,35 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :json
+  before_action :romanize_for,  only: [:index, :show, :edit, :update, :destroy]
+  respond_to :html, :json, :js
   
-  # GET /tasks
-  # GET /tasks.json
+
   def index
     respond_with(@tasks = Task.all)
-    #respond_to :html, :json
-  #  respond_to do |format|
-  #    format.html
-  #    format.json
-  #  end
+
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.json
-  def show
+
+  def show    
   end
 
-  # GET /tasks/new
+
   def new
     @task = Task.new
   end
 
-  # GET /tasks/1/edit
+
   def edit
   end
 
-  # POST /tasks
-  # POST /tasks.json
+  def shuffle
+    task = Task.find(params[:id]) 
+    Task.shuffle_task_for task
+
+    redirect_to task_path, notice: "Task shuffled!"
+  end
+
+
   def create
     @task = Task.new(task_params)
 
@@ -43,8 +44,7 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
+
   def update
     respond_to do |format|
       if @task.update(task_params)
@@ -57,8 +57,7 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.json
+
   def destroy
     @task.destroy
     respond_to do |format|
@@ -68,13 +67,17 @@ class TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_task
       @task = Task.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def romanize_for
+      tasks = Task.all
+      Task.romanize_for tasks
+    end
+
     def task_params
-      params.require(:task).permit(:name, :description)
+      params.require(:task).permit(:name, :description, :completed, :roman, :deadline)
     end
 end

@@ -1,0 +1,6 @@
+$(document).ready(function(){
+
+    $("#assign").click(function(){
+        $.ajax({url: "users/:id/assign", type: "POST"});
+    });
+});

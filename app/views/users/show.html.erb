@@ -1,2 +1,34 @@
-<h3>User</h3>
-<p>Email: <%= @user.email if @user.email %></p>
+<% if !current_user.nil? and current_user == @user or current_user.admin? %>
+  <h3>User</h3>
+  <p>Email: <%= @user.email if @user.email %></p>
+  <p>Completed Tasks: <%= @user.completed_tasks %></p>  <%#@user.completed_tasks%>
+
+  <!--<p>
+  <strong>Tasks:</strong>  
+    <%#= @user.task_assignments.collect { |u| u.task.name } %>  
+  </p>
+-->
+
+  <h1>Listing Tasks For This User</h1>
+
+<table id='task_table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Completed</th>
+      <th>Roman ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.tasks.each do |task| %>
+	    <%= render partial: 'user_tasks', locals: {task: task} %>
+    <% end %>
+  </tbody>
+</table>
+
+  <%= button_to 'ASSIGN TASKS', assign_tasks_path, form: { id: "assign"}, remote: true %>
+
+<% end %> 

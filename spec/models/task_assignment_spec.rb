@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe TaskAssignment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe TaskAssignment, type: :model do
+  
+  it "has a valid factory" do
+  	expect(FactoryGirl.create(:task_assignment)).to be_valid
+  end
+
 end

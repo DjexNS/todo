@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Task:</h1>
 <p>
   <strong>Name:</strong>
   <%= @task.name %>
@@ -10,5 +11,54 @@
   <%= @task.description %>
 </p>
 
+<p>
+  <strong>Completed?:</strong>
+  <%= @task.completed? %>
+</p>
+
+<p>
+  <strong>ID Number:</strong>
+  <%= @task.roman %>
+</p>
+
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Back', tasks_path %> |
+<%= button_to 'SHUFFLE', shuffle_tasks_path %>
+
+<!--<p>
+  <strong>Users:</strong>  
+  <%#= @task.task_assignments.collect { |t| t.user } %>  
+</p>
+-->
+
+<% @task.task_assignments.each do |tskas| %>
+	<%= tskas.id %>
+	<%= tskas.user_id %>
+	<%= tskas.task_id %>
+<% end %>
+
+<h2>Listing Users For This Task</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>ID</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+	<% @task.users.each do |user| %>
+	  <tr>
+        <td><%= link_to user.email, user %></td>
+        <td><%= user.id %></td>
+        <td><%#= link_to 'Show', user %></td>        
+	  </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
