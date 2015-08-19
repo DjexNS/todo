@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!  
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :assign]
   after_action :verify_authorized, except: [:show, :assign]
   respond_to :html, :js, :json
 
