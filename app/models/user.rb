@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   def self.assign_task_for (user)
     if (user.tasks.count < 5) 
-      n = rand(1..(5-user.tasks.count))
+      n = 1#rand(1..(5-user.tasks.count))
       n.times do 
         TaskAssignment.create(
           user_id: user.id,

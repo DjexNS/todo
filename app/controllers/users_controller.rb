@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def assign
-    #user = User.find(params[:id]) 
+    user = User.find(params[:id]) 
     User.assign_task_for user
     
     respond_to do |format|
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
         format.js   { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-    redirect_to user_path, notice: "Tasks assigned!"
+    #redirect_to user_path, notice: "Tasks assigned!"
   end
     
 
