@@ -2,8 +2,8 @@ class Task < ActiveRecord::Base
   validates :id, presence: true
   validates :name, presence: true
   validates :description, presence: true
-  #validates :completed, presence: true
-  #validates :roman, presence: true
+  validates :completed, presence: false
+  validates :roman, presence: true
   #validates :deadline, presence: true
 
   has_many :task_assignments
