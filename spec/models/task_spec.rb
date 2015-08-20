@@ -30,22 +30,21 @@ describe Task, type: :model do
   end
 
 
-#  it "is invalid without a deadline mark" do
-#    expect(FactoryGirl.build(:task, deadline: nil)).to_not be_valid
-#  end
+  it "is invalid without a deadline mark" do
+    expect(FactoryGirl.build(:task, deadline: nil)).to_not be_valid
+  end
 
 =begin
   describe ".romanize_for" do
-    
-    it "returns a romanized number" do
-  	  t1 = FactoryGirl.build(:task, id:1)
-  	  t2 = FactoryGirl.build(:task, id:2)
-  	  t3 = FactoryGirl.build(:task, id:3)
-  	  t = [t1, t2, t3]
+    context
+      it "returns a romanized number" do
+    	  t1 = FactoryGirl.build(:task, id:1)
+    	  t2 = FactoryGirl.build(:task, id:2)
+    	  t3 = FactoryGirl.build(:task, id:3)
+    	  t = [t1, t2, t3]
 
-  	  expect(Task.romanize_for(t)).to change([t...])
-    end
-
+    	  expect(Task.romanize_for(t)).to change([t...])
+      end
   end
 
 =end

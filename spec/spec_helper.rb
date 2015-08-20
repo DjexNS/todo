@@ -2,6 +2,7 @@ require 'rubygems'
 require 'spork'
 require "capybara/rspec"
 
+
 Spork.prefork do
 
   ENV["RAILS_ENV"] ||= 'test'
@@ -9,7 +10,7 @@ Spork.prefork do
   require 'rspec/rails'
   require "email_spec"
   require "factory_girl"
-
+  
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
